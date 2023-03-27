@@ -1,6 +1,6 @@
 specVersion: 0.0.4
-description: HL Protocol Goerli
-repository: https://github.com/horse-link/horse.link.subgraph
+description: HL Goerli Dev
+repository: https://github.com/horse-link/horse.link.subgraph.goerli.dev
 schema:
   file: ./schema.graphql
 
@@ -69,7 +69,7 @@ dataSources:
     name: Registry
     network: goerli
     source:
-      address: '0xcDC42831cbF7479D84297F9001fEB59b7eAfFFb6'
+      address: '0x6ab9Ea40205EA0ef79dae4AF08B5c2CA2dc450d9'
       abi: Registry
       startBlock: 8651282
     mapping:
