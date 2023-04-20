@@ -95,6 +95,7 @@ type Bet @entity {
   # tx for settledAt
   settledAtTx: String!
 
+  # whether the bet was refunded or not
   refunded: Boolean!
 }
 

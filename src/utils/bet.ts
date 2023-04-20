@@ -8,7 +8,14 @@ export function getBetId(id: string, marketAddress: string): string {
   return `BET_${marketAddress.toLowerCase()}_${id}`;
 }
 
-export function createBetEntity(params: Placed__Params, amount: BigInt, payout: BigInt, timestamp: BigInt, marketAddress: string, hash: Bytes): Bet {
+export function createBetEntity(
+  params: Placed__Params,
+  amount: BigInt,
+  payout: BigInt,
+  timestamp: BigInt,
+  marketAddress: string,
+  hash: Bytes
+): Bet {
   // check if entity exists already
   let entity = Bet.load(params.index.toString());
   // if the bet does not exist already
@@ -40,7 +47,9 @@ export function createBetEntity(params: Placed__Params, amount: BigInt, payout: 
   entity.marketAddress = marketAddress.toLowerCase();
 
   // store the asset address
-  entity.assetAddress = getMarketAssetAddress(Address.fromString(marketAddress));
+  entity.assetAddress = getMarketAssetAddress(
+    Address.fromString(marketAddress)
+  );
 
   // store the timestamp for when the bet is created, and the hash for the tx
   entity.createdAt = timestamp;
@@ -56,8 +65,11 @@ export function createBetEntity(params: Placed__Params, amount: BigInt, payout: 
   entity.settledAt = BigInt.zero();
   entity.settledAtTx = "";
 
+  // initialize bets as being not refunded
+  entity.refunded = false;
+
   entity.save();
 
   // return newly created entity
   return entity;
-};
+}
